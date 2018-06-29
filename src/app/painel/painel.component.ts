@@ -10,13 +10,15 @@ import { FRASES } from './frases-mock';
 export class PainelComponent implements OnInit {
 
   public frases: Frase[] = FRASES;
-  public instrucao: string = 'Traduza a frase abaixo se for capaz!';
-  public resposta: string = '';
+  public instrucao = 'Traduza a frase abaixo se for capaz!';
+  public resposta = '';
 
-  public rodada: number = 0;
+  public rodada = 0;
   public rodadaFrase: Frase;
 
-  public progresso: number = 0;
+  public progresso = 0;
+
+  public tentativas = 3;
 
   constructor() {
     this.atualizaRodada();
@@ -47,7 +49,11 @@ export class PainelComponent implements OnInit {
 
 
     } else {
-      alert('Deu Ruim!');
+        this.tentativas--;
+        if(this.tentativas === 0){
+          alert('Oops!');
+        }
+
     }
   }
 
