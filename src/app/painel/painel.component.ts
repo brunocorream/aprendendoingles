@@ -43,6 +43,11 @@ export class PainelComponent implements OnInit {
       // Aumenta o progresso
       this.progresso = this.progresso + (100 / this.frases.length);
 
+
+      if (this.rodada === 4) {
+        alert('Você passou de nível!');
+      }
+
       // Atualiza a frase
       this.atualizaRodada();
 
@@ -50,14 +55,14 @@ export class PainelComponent implements OnInit {
 
     } else {
         this.tentativas--;
-        if(this.tentativas === 0){
+        if (this.tentativas === 0) {
           alert('Oops!');
         }
 
     }
   }
 
-  public atualizaRodada(): void{
+  public atualizaRodada(): void {
     this.rodadaFrase = this.frases[this.rodada];
     // Limpa a resposta
     this.resposta = '';
